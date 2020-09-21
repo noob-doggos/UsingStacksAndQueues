@@ -88,15 +88,15 @@ public class UsingStacksSuitorsLab implements Runnable
         {
             stack.addToStart(input.charAt(i) + "");
         }
-        int revIdx = 0;
+        int idx = 0;
         while (!stack.isEmpty())
         {
             String backChar = stack.deleteHead().toString();
-            if (!(input.charAt(revIdx) + "").equals(backChar))
+            if (!(input.charAt(idx) + "").equals(backChar))
             {
                 return false;
             }
-            revIdx++;
+            idx++;
         }
         return true;
     }
