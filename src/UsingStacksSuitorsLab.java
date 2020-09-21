@@ -46,7 +46,7 @@ public class UsingStacksSuitorsLab implements Runnable
         System.out.println(s1 + " is a palindrome(recursively): " + isPalindromeRec(s1));
         System.out.println(s2 + " is a palindrome(recursively): " + isPalindromeRec(s2));
 
-        //System.out.println("Did we build a Queue of Threads and start them? " + buildThreadQueue());
+        System.out.println("Did we build a Queue of Threads and start them? " + buildThreadQueue());
 
         int n = 6;
         System.out.println("For " + n + " suitors, stand in place:" + findPlaceToStand(n));
@@ -128,7 +128,6 @@ public class UsingStacksSuitorsLab implements Runnable
             if (count == 2)
             {
                 // get rid of the current element.
-
                 count = 0;
                 continue;
             }
@@ -159,6 +158,15 @@ public class UsingStacksSuitorsLab implements Runnable
         // current = get a thread
         // current.start();
         // put the thread back
+        Thread startThr = q.poll();
+        startThr.start();
+        q.add(startThr);
+        while (q.peek() != startThr)
+        {
+            Thread owo = q.poll();
+            owo.start();
+            q.add(owo);
+        }
 
         System.out.println("Thread order after start()ing:");
         q.toString();
