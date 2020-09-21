@@ -163,9 +163,9 @@ public class UsingStacksSuitorsLab implements Runnable
         q.add(startThr);
         while (q.peek() != startThr)
         {
-            Thread owo = q.poll();
-            owo.start();
-            q.add(owo);
+            Thread toStart = q.poll();
+            toStart.start();
+            q.add(toStart);
         }
 
         System.out.println("Thread order after start()ing:");
