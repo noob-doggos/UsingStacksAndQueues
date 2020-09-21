@@ -45,16 +45,14 @@ public class UsingStacksSuitorsLab implements Runnable
 
         System.out.println(s1 + " is a palindrome(recursively): " + isPalindromeRec(s1));
         System.out.println(s2 + " is a palindrome(recursively): " + isPalindromeRec(s2));
-        /*
-         * System.out.println("Did we build a Queue of Threads and start them? "
-         * + buildThreadQueue());
-         * 
-         * int n = 6; System.out.println("For " + n +
-         * " suitors, stand in place:" + findPlaceToStand(n));
-         * 
-         * n = 10; System.out.println("For " + n + " suitors, stand in place:" +
-         * findPlaceToStand(n));
-         */
+
+        //System.out.println("Did we build a Queue of Threads and start them? " + buildThreadQueue());
+
+        int n = 6;
+        System.out.println("For " + n + " suitors, stand in place:" + findPlaceToStand(n));
+
+        n = 10;
+        System.out.println("For " + n + " suitors, stand in place:" + findPlaceToStand(n));
 
     }
 
@@ -116,7 +114,29 @@ public class UsingStacksSuitorsLab implements Runnable
     public static int findPlaceToStand(int numSuitors)
     {
         // todo
-        return -1;
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 1; i <= numSuitors; i++)
+        {
+            q.add(i);
+        }
+
+        int count = 0;
+
+        while (q.size() > 1)
+        {
+            int cur = q.poll();
+            if (count == 2)
+            {
+                // get rid of the current element.
+
+                count = 0;
+                continue;
+            }
+            q.add(cur);
+            count++;
+        }
+
+        return q.poll();
     }
 
     public static boolean buildThreadQueue()
